@@ -2,73 +2,69 @@
 
 **EXP:** CONTINUOUS ASSESSMENT 9
 
-**NAME OF EXP:** Basic UART Communication 
+**DATE:** 28/09/2026
 
-**HARDWARE SETUP / PLATFORM:** STM32CubeMX + Keil MDK + STM32 Development Board Blue Pill STM32F103C8T6
+**NAME OF EXP:** UART Receive and Echo Using STM32
+
+**HARDWARE SETUP / PLATFORM:** STM32 Development Board + STM32CubeMX + Keil µVision + UART Serial Terminal
 
 ---
 
-## TASK 9A – UART Communication
+## TASK 9A : UART Receive and Echo
 
 ### 1. Circuit Diagram
 
-The experiment demonstrates UART serial communication using the USART1 peripheral of the STM32 Blue Pill development board.
+The experiment demonstrates UART serial communication between an STM32 microcontroller and a serial terminal using USART1.
 
-**Hardware Components:**
-- **Development Board:** STM32 Blue Pill
-- **Microcontroller IC:** STM32F103C8T6
-- **UART Peripheral:** USART1
-- **TX Pin:** PA9 (USART1_TX)
-- **RX Pin:** PA10 (USART1_RX)
-- **Communication Interface:** USB-to-TTL Serial Converter
+- **Microcontroller:** STM32
+- **Peripheral:** USART1
+- **Baud Rate:** 115200
+- **Data Bits:** 8
+- **Stop Bits:** 1
+- **Parity:** None
+- **UART Mode:** Transmit and Receive
 
-**Connections:**
-- STM32 PA9 (TX) → USB-to-TTL RX
-- STM32 PA10 (RX) → USB-to-TTL TX
-- STM32 GND → USB-to-TTL GND
-
-**UART Configuration:**
-- Baud Rate: 115200
-- Word Length: 8 Bits
-- Stop Bits: 1
-- Parity: None
-- Mode: Transmitter and Receiver
+![Circuit Diagram](circuit.png)
 
 ### 2. Core Logic / Pseudocode / Code Base
 
 **Working Principle:**
 
-The experiment demonstrates UART communication using the STM32 HAL library. USART1 is configured in transmit and receive mode with a baud rate of 115200.
+The STM32 microcontroller communicates with a serial terminal using USART1.
 
-The microcontroller continuously receives a character through the UART receiver (RX). After receiving the character, it introduces a delay of 1 second and transmits the same character back through the UART transmitter (TX). Another delay of 1 second is introduced before repeating the process.
+The microcontroller receives one character through UART, waits for 1000 milliseconds, and transmits the same character back to the terminal.
+
+Another delay of 1000 milliseconds is introduced before the next character is received.
+
+This process repeats continuously.
 
 **Pseudocode:**
 
-1. Initialize the HAL library.
+1. Initialize the STM32 HAL library.
 2. Configure the system clock.
-3. Initialize GPIO pins.
-4. Initialize USART1 with a baud rate of 115200.
-5. Declare a variable to store the received character.
-6. Wait until a character is received through UART.
-7. Introduce a delay of 1 second.
-8. Transmit the received character through UART.
-9. Introduce another delay of 1 second.
-10. Repeat the process continuously.
+3. Initialize GPIO and USART1.
+4. Configure USART1 for 115200 baud.
+5. Declare an 8-bit variable to store the received character.
+6. Receive one character through USART1.
+7. Introduce a delay of 1000 milliseconds.
+8. Transmit the received character back through USART1.
+9. Introduce another delay of 1000 milliseconds.
+10. Repeat continuously.
 
 **Code Base:**
 
-The UART communication operations are performed using the following STM32 HAL functions:
-
-- `HAL_UART_Init()` – Initializes the USART peripheral.
-- `HAL_UART_Receive()` – Receives data through UART.
-- `HAL_UART_Transmit()` – Transmits data through UART.
-- `HAL_Delay()` – Introduces time delays.
-- `HAL_Init()` – Initializes the HAL library.
-
-The `HAL_MAX_DELAY` parameter makes the receive and transmit operations wait until completion or an error occurs.
+- `HAL_Init()` initializes the HAL library.
+- `SystemClock_Config()` configures the system clock.
+- `MX_GPIO_Init()` initializes the GPIO pins.
+- `MX_USART1_UART_Init()` initializes USART1.
+- `uint8_t rx` stores the received character.
+- `HAL_UART_Receive(&huart1, &rx, 1, HAL_MAX_DELAY)` receives one byte through UART.
+- `HAL_Delay(1000)` introduces a delay of 1000 milliseconds.
+- `HAL_UART_Transmit(&huart1, &rx, 1, HAL_MAX_DELAY)` transmits the received byte.
+- `while(1)` continuously repeats the process.
 
 ### 3. Inference
 
-The STM32 Blue Pill successfully receives a character through USART1 and transmits the same character back after a delay of 1 second.
+The program demonstrates UART character reception and echo transmission using the STM32 USART1 peripheral.
 
-This experiment demonstrates basic UART serial communication, character reception, data transmission, and the use of STM32 HAL UART functions.
+The experiment illustrates basic serial communication using STM32 HAL functions and software delays.
