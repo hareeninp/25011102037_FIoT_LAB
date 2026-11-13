@@ -1,97 +1,99 @@
 # EXPERIMENT DETAILS
 
-**EXP:** CONTINUOUS ASSESSMENT 12
+**EXP:** CONTINUOUS LAB EVALUATION 11
 
-**NAME OF EXP:** STM32 GPIO – Short Press and Long Press Detection for LED Control
+**DATE:** 14/10/2026
 
-**HARDWARE SETUP / PLATFORM:** STM32CubeMX + Keil MDK + STM32F401RE Development Board
+**NAME OF EXP:** STM32F401RE Cortex-M4: GPIO and User Input Programming
+
+**HARDWARE SETUP / PLATFORM:** STM32 NUCLEO-F401RE Development Board + STM32CubeMX + Keil MDK + STM32 HAL Libraries
 
 ---
 
-## TASK 3 – Short Press and Long Press Detection
+## TASK 3 : Short-Press and Long-Press Detection
 
 ### 1. Circuit Diagram
 
-The experiment demonstrates GPIO input and output operations using the STM32 microcontroller. GPIO pin PC13 is configured as a digital input to detect push button presses, while PA5 is configured as a digital output to control the LED.
+The on-board user button is used to detect different press durations. The on-board LED indicates the action associated with the detected press.
 
-**Hardware Components:**
+**Pin Connections:**
 
-- **Development Board:** STM32F401RE
-- **Microcontroller IC:** STM32F401RE
-- **Input GPIO Pin:** PC13
-- **Output GPIO Pin:** PA5
-- **Input Device:** Push Button
-- **Output Device:** LED
+- PA5 — On-board LED (LD2)
+- PC13 — On-board push button (B1)
 
-**Connections:**
-
-- Push Button → GPIO PC13
-- LED → GPIO PA5
-- Common Ground → GND
+![Circuit Diagram](circuit.png)
 
 ### 2. Core Logic / Pseudocode / Code Base
 
 **Working Principle:**
 
-The experiment demonstrates short press and long press detection using the STM32 HAL library.
+The STM32 measures how long the user button remains pressed using `HAL_GetTick()`.
 
-GPIO pin PC13 is configured as an input to detect push button presses, while PA5 is configured as an output to control the LED.
+The measured press duration is compared with a predefined threshold to classify the input as a short press or a long press.
 
-Initially, the LED is turned OFF. When the push button is pressed, the program introduces a debounce delay of 20 milliseconds and verifies that the button is still pressed.
+For this example implementation:
 
-The program records the button press start time using `HAL_GetTick()`. It continuously monitors the button until it is released and calculates the total press duration.
-
-Based on the duration, two operations are performed:
-
-- **Short Press (less than 1000 ms):** The LED state is toggled. If the LED is OFF, it turns ON; if it is ON, it turns OFF.
-- **Long Press (1000 ms or more):** The LED starts blinking continuously with an ON/OFF interval of 500 milliseconds.
+- Short press (less than 1000 ms): Toggle the LED.
+- Long press (1000 ms or more): Turn the LED OFF.
 
 **Pseudocode:**
 
-1. Initialize the HAL library.
-2. Configure the system clock.
-3. Enable GPIOA, GPIOC, and GPIOH peripheral clocks.
-4. Configure PC13 as GPIO input.
-5. Configure PA5 as GPIO output.
-6. Initialize the LED state as OFF.
-7. Continuously monitor the push button state.
-8. Check whether the button is pressed (LOW state).
-9. Introduce a debounce delay of 20 milliseconds.
-10. Verify that the button is still pressed.
-11. Record the button press start time using `HAL_GetTick()`.
-12. Wait until the push button is released.
-13. Calculate the button press duration.
-14. Introduce a debounce delay of 20 milliseconds.
-15. Check the press duration:
-    - If the duration is less than 1000 ms, toggle the LED state.
-    - If the duration is 1000 ms or more, enter continuous blinking mode.
-16. In long press mode, toggle the LED every 500 milliseconds.
-17. Repeat the process continuously for short presses.
+1. Initialize the STM32 HAL library and system clock.
+2. Configure PA5 as GPIO output.
+3. Configure PC13 as GPIO input.
+4. Monitor the button state.
+5. Detect a button press.
+6. Record the press start time using `HAL_GetTick()`.
+7. Wait for the button to be released.
+8. Calculate the press duration.
+9. Compare the duration with the threshold.
+10. Perform the corresponding LED action.
+11. Repeat continuously.
 
 **Code Base:**
 
-The GPIO operations and button press duration measurement are performed using the following STM32 HAL functions and variables:
+```c
+uint32_t press_start;
+uint32_t press_duration;
 
-- `HAL_Init()` – Initializes the HAL library.
-- `HAL_GPIO_Init()` – Configures GPIO pins as input or output.
-- `HAL_GPIO_ReadPin()` – Reads the push button input state.
-- `HAL_GPIO_WritePin()` – Sets or resets the LED output pin.
-- `HAL_GPIO_TogglePin()` – Toggles the LED state.
-- `HAL_GetTick()` – Returns the system tick count in milliseconds.
-- `HAL_Delay()` – Introduces debounce delays and blinking intervals.
+while (1)
+{
+    if (HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_13)
+        == GPIO_PIN_SET)
+    {
+        HAL_Delay(20);
 
-**Important Variables:**
+        if (HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_13)
+            == GPIO_PIN_SET)
+        {
+            press_start = HAL_GetTick();
 
-- `ledState` – Stores the current LED state.
-- `pressStartTime` – Stores the time when the button is pressed.
-- `pressDuration` – Stores the total duration of the button press.
+            while (HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_13)
+                   == GPIO_PIN_SET)
+            {
+            }
 
-The difference between the current tick count and the recorded press start time is used to calculate the button press duration.
+            press_duration = HAL_GetTick() - press_start;
+
+            if (press_duration < 1000)
+            {
+                HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5);
+            }
+            else
+            {
+                HAL_GPIO_WritePin(
+                    GPIOA,
+                    GPIO_PIN_5,
+                    GPIO_PIN_RESET
+                );
+            }
+        }
+    }
+}
+```
 
 ### 3. Inference
 
-The STM32F401RE successfully detects short and long push button presses through GPIO pin PC13 and controls the LED connected to PA5.
+The task demonstrates the detection of short and long button presses using timing functions in the STM32 HAL library.
 
-A short press toggles the LED between ON and OFF states, while a long press activates continuous LED blinking at 500-millisecond intervals.
-
-This experiment demonstrates GPIO input/output configuration, button press duration measurement, software debouncing, and short press/long press detection using STM32 HAL functions.
+By measuring the button press duration, a single push button can be used to perform different operations.
