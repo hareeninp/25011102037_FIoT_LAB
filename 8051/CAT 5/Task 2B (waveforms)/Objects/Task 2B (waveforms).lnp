@@ -1,0 +1,4 @@
+".\Objects\STARTUP.obj",
+".\Objects\waveforms.obj" 
+TO ".\Objects\Task 2B (waveforms)" 
+PRINT(".\Listings\Task 2B (waveforms).m51") RAMSIZE(256) 
