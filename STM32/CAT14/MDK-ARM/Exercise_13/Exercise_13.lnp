@@ -1,0 +1,25 @@
+--cpu=Cortex-M4.fp.sp
+"exercise_13\startup_stm32f401xe.o"
+"exercise_13\main.o"
+"exercise_13\stm32f4xx_it.o"
+"exercise_13\stm32f4xx_hal_msp.o"
+"exercise_13\esplib.o"
+"exercise_13\stm32f4xx_hal_uart.o"
+"exercise_13\stm32f4xx_hal_rcc.o"
+"exercise_13\stm32f4xx_hal_rcc_ex.o"
+"exercise_13\stm32f4xx_hal_flash.o"
+"exercise_13\stm32f4xx_hal_flash_ex.o"
+"exercise_13\stm32f4xx_hal_flash_ramfunc.o"
+"exercise_13\stm32f4xx_hal_gpio.o"
+"exercise_13\stm32f4xx_hal_dma_ex.o"
+"exercise_13\stm32f4xx_hal_dma.o"
+"exercise_13\stm32f4xx_hal_pwr.o"
+"exercise_13\stm32f4xx_hal_pwr_ex.o"
+"exercise_13\stm32f4xx_hal_cortex.o"
+"exercise_13\stm32f4xx_hal.o"
+"exercise_13\stm32f4xx_hal_exti.o"
+"exercise_13\system_stm32f4xx.o"
+--strict --scatter "Exercise_13\Exercise_13.sct"
+--summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list "Exercise_13.map" -o Exercise_13\Exercise_13.axf
