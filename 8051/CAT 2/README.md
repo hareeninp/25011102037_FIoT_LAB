@@ -15,9 +15,7 @@
 ### 1. Circuit Diagram
 
 AT89S52 development board with an LED connected to Port 1, Pin 0 (P1.0).
-![
-    
-](<AT89S52 LED Circuit Schematic-1.png>)
+![Circuit Diagram](<AT89S52 LED Circuit Schematic-1.png>)
 
 ### 2. Hardware Bring-Up Details
 
