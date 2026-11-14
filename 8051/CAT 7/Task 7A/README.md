@@ -18,7 +18,7 @@ AT89S52 development board interfaced with a 16×2 LCD (HD44780 compatible) confi
 
 **Circuit Diagram:**
 
-![Circuit Diagram](https://raw.githubusercontent.com/hareeninp/25011102037_FIoT_LAB/main/8051/CAT%207/Task%207A/circuit.png)
+![Circuit Diagram](circuit.png)
 
 ### 2. Core Logic / Pseudocode
 
