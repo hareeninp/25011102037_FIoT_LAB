@@ -14,18 +14,23 @@
 
 ### 1. Circuit Diagram
 
-AT89S52 development board interfaced with a Matrix Keypad (input device), a Seven-Segment Display (visual feedback), and four LEDs (operating mode indicators). Circuit diagram attached.![Circuit Diagram](circuit.png)
+AT89S52 development board interfaced with a Matrix Keypad (input device), a Seven-Segment Display (visual feedback), and four LEDs (operating mode indicators).
+
+**Circuit Diagram:**
+
+![Circuit Diagram](https://raw.githubusercontent.com/hareeninp/25011102037_FIoT_LAB/main/8051/CAT%204/circuit.png)
+
 ### 2. Hardware Setup & Functional Mapping
 
 | Key Press | Seven-Segment Display | LED Operation |
-| --------- | --------------------- | ------------- |
+|---|---|---|
 | `1` | `1` | LED1 ON |
 | `2` | `2` | LED2 ON |
 | `3` | `3` | LED3 ON |
 | `4` | `4` | LED4 ON |
 | `5` | `5` | Running LED Pattern |
-| `6` | `6` | Alternate LEDs ($1010 \leftrightarrow 0101$) |
-| `7` | `7` | Binary Counter ($0\text{–}15$) |
+| `6` | `6` | Alternate LEDs (`1010` ↔ `0101`) |
+| `7` | `7` | Binary Counter (`0–15`) |
 | `8` | `8` | All LEDs Blink |
 | `9` | `9` | All LEDs OFF |
 | `0` | `0` | Reset System |
@@ -42,7 +47,7 @@ AT89S52 development board interfaced with a Matrix Keypad (input device), a Seve
 ### 4. Program Parameters
 
 | Parameter | Value |
-| --------- | ----- |
+|---|---|
 | Microcontroller | AT89S52 |
 | CPU Core | 8-bit 8051 |
 | Operating Voltage | 5V |
@@ -55,4 +60,6 @@ AT89S52 development board interfaced with a Matrix Keypad (input device), a Seve
 
 ### 5. Inference
 
-Successfully designed and implemented a modular, bare-metal Human-Machine Interface (HMI) on the AT89S52 microcontroller. Pressing any valid key (`0`–`9`) on the matrix keypad accurately updates the seven-segment display and executes the corresponding LED pattern or control mode through dedicated C functions without relying on external HAL or RTOS libraries.
+Successfully designed and implemented a modular, bare-metal Human-Machine Interface (HMI) on the AT89S52 microcontroller.
+
+Pressing any valid key (`0`–`9`) on the matrix keypad accurately updates the seven-segment display and executes the corresponding LED pattern or control mode through dedicated C functions without relying on external HAL or RTOS libraries.
