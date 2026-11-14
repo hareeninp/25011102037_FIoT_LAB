@@ -14,9 +14,7 @@
 
 ### 1. Circuit Diagram
 
-AT89S52 development board configured with a crystal oscillator ($11.0592\text{ MHz}$) and an output LED connected to a GPIO pin via a current-limiting resistor. Circuit diagram attached.![
-    
-](<AT89S52 Timer 0 LED Fading Schematic-1.png>)
+AT89S52 development board configured with a crystal oscillator ($11.0592\text{ MHz}$) and an output LED connected to a GPIO pin via a current-limiting resistor. Circuit diagram attached.![Circuit Diagram](circuit.png)
 
 ### 2. Hardware & PWM Duty Cycle Specifications
 

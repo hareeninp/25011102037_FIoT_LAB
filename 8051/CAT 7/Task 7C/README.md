@@ -14,9 +14,7 @@
 
 ### 1. Circuit Diagram
 
-AT89S52 development board interfaced with a $16\times2$ LCD and a $4\times4$ matrix keypad. Keypad rows and columns are mapped to designated 8051 GPIO ports with software debouncing. Circuit diagram attached.![
-    
-](<AT89S52 LCD Keypad Circuit Schematic-1.png>)
+AT89S52 development board interfaced with a $16\times2$ LCD and a $4\times4$ matrix keypad. Keypad rows and columns are mapped to designated 8051 GPIO ports with software debouncing. Circuit diagram attached.![Circuit Diagram](circuit.png)
 
 ### 2. Functional Key Mapped Controls
 

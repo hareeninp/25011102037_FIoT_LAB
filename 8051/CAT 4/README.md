@@ -14,10 +14,7 @@
 
 ### 1. Circuit Diagram
 
-AT89S52 development board interfaced with a Matrix Keypad (input device), a Seven-Segment Display (visual feedback), and four LEDs (operating mode indicators). Circuit diagram attached.![
-    
-](<AT89S52 Keypad and Display Wiring Diagram-1.png>)
-
+AT89S52 development board interfaced with a Matrix Keypad (input device), a Seven-Segment Display (visual feedback), and four LEDs (operating mode indicators). Circuit diagram attached.![Circuit Diagram](circuit.png)
 ### 2. Hardware Setup & Functional Mapping
 
 | Key Press | Seven-Segment Display | LED Operation |

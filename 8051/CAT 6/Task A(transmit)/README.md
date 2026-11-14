@@ -14,9 +14,7 @@
 
 ### 1. Circuit Diagram
 
-AT89S52 development board connected to a PC via a USB-to-TTL serial converter. The microcontroller's TXD pin (`P3.1`) is connected to the RX pin of the USB-to-TTL adapter, with a common GND connection established between the board and converter. Circuit diagram attached.![
-    
-](<AT89S52 UART Communication Diagram-1.png>)
+AT89S52 development board connected to a PC via a USB-to-TTL serial converter. The microcontroller's TXD pin (`P3.1`) is connected to the RX pin of the USB-to-TTL adapter, with a common GND connection established between the board and converter. Circuit diagram attached.![Circuit Diagram](circuit.png)
 
 ### 2. Core Logic / Pseudocode
 
