@@ -174,6 +174,14 @@ The Node-RED application contains:
 6. An `ac_fan_decision` function to compare indoor and outdoor conditions.
 7. Four `ui-text` widgets to display readings and recommended actions.
 
+**Node-RED Workflow Diagram**
+
+The Node-RED workflow receives indoor temperature, pressure, and humidity measurements through MQTT and outdoor weather information through an HTTP API.
+
+The readings are stored in flow memory and processed by a decision function. The results are displayed on Node-RED Dashboard 2.0.
+
+![Node-RED Workflow](node_red_workflow.png)
+
 **Flow Memory Variables**
 
 ```text
@@ -276,6 +284,6 @@ The MQTT protocol allows Node-RED to receive sensor measurements, and the outdoo
 
 The Node-RED decision function analyzes the difference between indoor and outdoor conditions and displays recommendations for improving indoor comfort.
 
-The project successfully illustrates the architecture of an IoT-based environmental monitoring and decision-support system.
+The project illustrates the architecture of an IoT-based environmental monitoring and decision-support system.
 
 The recommendations are displayed on the dashboard and do not directly operate physical AC, fan, or ventilation equipment.
