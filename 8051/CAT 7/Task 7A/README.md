@@ -14,24 +14,28 @@
 
 ### 1. Circuit Diagram
 
-AT89S52 development board interfaced with a $16\times2$ LCD (HD44780 compatible) configured in 4-bit mode. Control pins (`RS`, `E`) and data pins (`D4`–`D7`) are connected to designated GPIO port pins, with contrast adjusted via a potentiometer. Circuit diagram attached.![Circuit Diagram](circuit.png)
+AT89S52 development board interfaced with a 16×2 LCD (HD44780 compatible) configured in 4-bit mode. Control pins (`RS`, `E`) and data pins (`D4`–`D7`) are connected to designated GPIO port pins, with contrast adjusted via a potentiometer.
+
+**Circuit Diagram:**
+
+![Circuit Diagram](https://raw.githubusercontent.com/hareeninp/25011102037_FIoT_LAB/main/8051/CAT%207/Task%207A/circuit.png)
 
 ### 2. Core Logic / Pseudocode
 
 1. Include the required 8051 register header file (`reg51.h` / `reg52.h`).
-2. Define GPIO pin mappings for control signals (`RS`, `E`) and 4-bit data bus (`D4`–`D7`).
+2. Define GPIO pin mappings for control signals (`RS`, `E`) and the 4-bit data bus (`D4`–`D7`).
 3. Implement a microsecond/millisecond delay routine required for LCD timing compliance.
 4. Develop `lcd_cmd(unsigned char cmd)` to send initialization and configuration commands in two 4-bit nibbles.
 5. Develop `lcd_data(unsigned char dat)` to send ASCII characters to the LCD DDRAM in two 4-bit nibbles.
-6. Implement `lcd_init()` to send the precise HD44780 initialization command sequence: power-on delay, function set ($4\text{-bit}$, $2\text{-line}$, $5\times8\text{ font}$), display control (display ON, cursor/blink settings), entry mode set, and display clear.
-7. Write main test logic to display individual characters (e.g., `'A'`) and strings across both rows of the $16\times2$ display.
+6. Implement `lcd_init()` to send the HD44780 initialization command sequence: power-on delay, 4-bit interface initialization, function set (4-bit, 2-line, 5×8 font), display control (display ON, cursor/blink settings), entry mode set, and display clear.
+7. Write main test logic to display individual characters (e.g., `'A'`) and strings across both rows of the 16×2 display.
 
 ### 3. Program Parameters
 
 | Parameter | Value |
-| --- | --- |
+|---|---|
 | Microcontroller | AT89S52 |
-| LCD Controller | HD44780 Compatible ($16\times2$ Character LCD) |
+| LCD Controller | HD44780 Compatible (16×2 Character LCD) |
 | Interface Mode | 4-Bit Parallel Interface (`D4`–`D7`, `RS`, `E`) |
 | Source File | `lcd_init_dispay.c` |
 | Project File | `LCD_Int_display.uvproj` |
@@ -42,4 +46,6 @@ AT89S52 development board interfaced with a $16\times2$ LCD (HD44780 compatible)
 
 ### 4. Inference
 
-Successfully developed a low-level, bare-metal 4-bit LCD driver for the AT89S52 microcontroller based on the HD44780 datasheet specifications. The LCD was successfully initialized and verified by rendering custom characters and multi-row strings without relying on external libraries.
+Successfully developed a low-level, bare-metal 4-bit LCD driver for the AT89S52 microcontroller based on the HD44780 datasheet specifications.
+
+The LCD was successfully initialized and verified by rendering individual characters and multi-row strings without relying on external libraries.
