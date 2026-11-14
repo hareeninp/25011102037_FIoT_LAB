@@ -18,7 +18,7 @@ AT89S52 development board configured with a crystal oscillator (11.0592 MHz) and
 
 **Circuit Diagram:**
 
-![Circuit Diagram](https://raw.githubusercontent.com/hareeninp/25011102037_FIoT_LAB/main/8051/CAT%205/Task%202A%20%28led%20fading%20pwm%29/circuit.png)
+![Circuit Diagram](circuit.png)
 
 ### 2. Hardware & PWM Duty Cycle Specifications
 
