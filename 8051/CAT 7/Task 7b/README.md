@@ -18,7 +18,7 @@ AT89S52 development board interfaced with a 16×2 LCD in 4-bit mode. Connections
 
 **Circuit Diagram:**
 
-![Circuit Diagram](https://raw.githubusercontent.com/hareeninp/25011102037_FIoT_LAB/main/8051/CAT%207/Task%207b/circuit.png)
+![Circuit Diagram](circuit.png)
 
 ### 2. Core Logic / Pseudocode
 
@@ -44,6 +44,6 @@ AT89S52 development board interfaced with a 16×2 LCD in 4-bit mode. Connections
 
 ### 4. Inference
 
-Successfully extended the 4-bit LCD driver with cursor positioning and formatting routines (`lcd_goto`, `lcd_puts`, `lcd_print_number`).
+Successfully extended the 4-bit LCD driver with cursor positioning and formatting routines (`lcd_goto`, `lcd_puts`, `lcd_print_number()`).
 
 This enabled precise coordinate-based string output and real-time numerical updates on the 16×2 display.
