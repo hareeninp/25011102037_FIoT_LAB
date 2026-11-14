@@ -18,7 +18,7 @@ AT89S52 development board configured with four LEDs connected to four GPIO outpu
 
 **Circuit Diagram:**
 
-![Circuit Diagram](https://raw.githubusercontent.com/hareeninp/25011102037_FIoT_LAB/main/8051/CAT%203/circuit.png)
+![Circuit Diagram](circuit.png)
 
 ### 2. Hardware Setup & Operating Modes
 
