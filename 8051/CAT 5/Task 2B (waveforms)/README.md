@@ -18,7 +18,7 @@ AT89S52 development board configured with an 11.0592 MHz crystal oscillator and 
 
 **Circuit Diagram:**
 
-![Circuit Diagram](https://raw.githubusercontent.com/hareeninp/25011102037_FIoT_LAB/main/8051/CAT%205/Task%202B%20%28waveforms%29/circuit.png)
+![Circuit Diagram](circuit.png)
 
 ### 2. Frequency Modes & Waveform Specifications
 
