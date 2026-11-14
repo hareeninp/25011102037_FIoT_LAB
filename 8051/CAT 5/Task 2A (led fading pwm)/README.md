@@ -14,20 +14,24 @@
 
 ### 1. Circuit Diagram
 
-AT89S52 development board configured with a crystal oscillator ($11.0592\text{ MHz}$) and an output LED connected to a GPIO pin via a current-limiting resistor. Circuit diagram attached.![Circuit Diagram](circuit.png)
+AT89S52 development board configured with a crystal oscillator (11.0592 MHz) and an output LED connected to a GPIO pin via a current-limiting resistor.
+
+**Circuit Diagram:**
+
+![Circuit Diagram](https://raw.githubusercontent.com/hareeninp/25011102037_FIoT_LAB/main/8051/CAT%205/Task%202A%20%28led%20fading%20pwm%29/circuit.png)
 
 ### 2. Hardware & PWM Duty Cycle Specifications
 
 | Parameter | Student Entry |
-| --- | --- |
+|---|---|
 | MCU | AT89S52 |
-| CPU Core | 8-bit 8051 ($12$-clock architecture) |
-| Crystal Frequency | $11.0592\text{ MHz}$ ($T_{\text{machine}} \approx 1.085\ \mu\text{s}$) |
-| Operating Voltage | $5\text{V}$ |
+| CPU Core | 8-bit 8051 (12-clock architecture) |
+| Crystal Frequency | 11.0592 MHz (machine cycle ≈ 1.085 µs) |
+| Operating Voltage | 5V |
 | Timer Used | Timer 0 (16-bit Mode 1) |
-| Suggested PWM Frequency | $500\text{ Hz} – 1\text{ kHz}$ (non-flickering persistence) |
-| Duty Cycle Progression | $0\% \rightarrow 10\% \rightarrow \dots \rightarrow 100\% \rightarrow \dots \rightarrow 10\% \rightarrow 0\%$ |
-| Brightness Mapping | $0\%$ (OFF), $25\%$ (Dim), $50\%$ (Medium), $75\%$ (Bright), $100\%$ (Fully ON) |
+| Suggested PWM Frequency | 500 Hz – 1 kHz (non-flickering persistence) |
+| Duty Cycle Progression | 0% → 10% → … → 100% → … → 10% → 0% |
+| Brightness Mapping | 0% (OFF), 25% (Dim), 50% (Medium), 75% (Bright), 100% (Fully ON) |
 
 ### 3. Core Logic / Pseudocode
 
@@ -36,16 +40,16 @@ AT89S52 development board configured with a crystal oscillator ($11.0592\text{ M
 3. Enable Timer 0 interrupt (`ET0 = 1`) and global interrupts (`EA = 1`), then start the timer (`TR0 = 1`).
 4. Inside the Timer 0 ISR, reload the timer registers and increment a software PWM tick counter to maintain a non-blocking time base.
 5. Compare the tick counter against the current duty-cycle threshold to toggle the LED pin HIGH or LOW.
-6. Periodically increment the duty cycle from $0\%$ to $100\%$ and decrement it back to $0\%$ to create a smooth fading effect without using blocking delay loops.
+6. Periodically increment the duty cycle from 0% to 100% and decrement it back to 0% to create a smooth fading effect without using blocking delay loops.
 
 ### 4. Program Parameters
 
 | Parameter | Value |
-| --- | --- |
+|---|---|
 | Microcontroller | AT89S52 |
 | Source File | `timer_interrupt.c` |
 | Project File | `timer_interrupt.uvproj` |
-| Timer Preload ($1\text{ ms}$ base) | `TH0 = 0xFC; TL0 = 0x66;` ($N \approx 922$ counts) |
+| Timer Preload (1 ms base) | `TH0 = 0xFC; TL0 = 0x66;` (approximately 922 counts) |
 | Timing Mechanism | Hardware Timer 0 Interrupt (Non-Blocking) |
 | Programming Language | Bare-Metal Embedded C (Direct Register Access) |
 | Restrictions | Strictly No Arduino APIs, HAL libraries, or RTOS services |
@@ -53,4 +57,6 @@ AT89S52 development board configured with a crystal oscillator ($11.0592\text{ M
 
 ### 5. Inference
 
-Successfully implemented a non-blocking, timer-interrupt-driven software PWM controller on the AT89S52 microcontroller. By dynamically varying the duty cycle between $0\%$ and $100\%$ at a high switching frequency ($500\text{ Hz} – 1\text{ kHz}$), smooth LED brightness fading was achieved without using blocking software delay loops.
+Successfully implemented a non-blocking, timer-interrupt-driven software PWM controller on the AT89S52 microcontroller.
+
+By dynamically varying the duty cycle between 0% and 100% at a high switching frequency (500 Hz – 1 kHz), smooth LED brightness fading was achieved without using blocking software delay loops.
