@@ -18,7 +18,7 @@ AT89S52 development board connected to a PC via a USB-to-TTL serial converter. T
 
 **Circuit Diagram:**
 
-![Circuit Diagram](https://raw.githubusercontent.com/hareeninp/25011102037_FIoT_LAB/main/8051/CAT%206/Task%20A%28transmit%29/circuit.png)
+![Circuit Diagram](circuit.png)
 
 ### 2. Core Logic / Pseudocode
 
