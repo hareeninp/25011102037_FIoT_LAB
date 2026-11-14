@@ -18,7 +18,7 @@ AT89S52 development board interfaced with a 16×2 LCD and a 4×4 matrix keypad. 
 
 **Circuit Diagram:**
 
-![Circuit Diagram](https://raw.githubusercontent.com/hareeninp/25011102037_FIoT_LAB/main/8051/CAT%207/Task%207C/circuit.png)
+![Circuit Diagram](circuit.png)
 
 ### 2. Functional Key Mapped Controls
 
@@ -55,4 +55,4 @@ AT89S52 development board interfaced with a 16×2 LCD and a 4×4 matrix keypad. 
 
 Successfully developed an interactive embedded application combining the 4×4 keypad and 16×2 LCD driver.
 
-User inputs from the matrix keypad successfully govern real-time coordinate tracking and character movement across the LCD screen without external helper libraries.
+User
