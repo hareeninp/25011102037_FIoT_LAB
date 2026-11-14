@@ -18,7 +18,7 @@ AT89S52 development board interfaced with a Matrix Keypad (input device), a Seve
 
 **Circuit Diagram:**
 
-![Circuit Diagram](https://raw.githubusercontent.com/hareeninp/25011102037_FIoT_LAB/main/8051/CAT%204/circuit.png)
+![Circuit Diagram](circuit.png)
 
 ### 2. Hardware Setup & Functional Mapping
 
